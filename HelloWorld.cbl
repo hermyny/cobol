@@ -8,7 +8,7 @@
        linkage section.
 
        procedure division.
-           DISPLAY "Hello My Friends!! LA vie est belle!!"
+           DISPLAY "Hello My Friends!!!!"
            goback.
 
        end program HelloWorld.
