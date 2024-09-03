@@ -1,42 +1,58 @@
       ******************************************************************
       * Author:
       * Date:
-      * Purpose:Ecris un programme qui prend entrée deux nombres et qui a pour résultat leur reste
+      * Purpose:Ecris un programme qui prend entrï¿½e deux nombres et qui a pour rï¿½sultat leur reste
       * Tectonics: cobc
       ******************************************************************
-       IDENTIFICATION DIVISION.
-      *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-       PROGRAM-ID. soustraction.
-       ENVIRONMENT DIVISION.
-      *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-       CONFIGURATION SECTION.
-      *-----------------------
-       INPUT-OUTPUT SECTION.
-      *-----------------------
+              IDENTIFICATION DIVISION.
+       PROGRAM-ID. Subtraction.
+
        DATA DIVISION.
-      *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-       FILE SECTION.
-      *-----------------------
        WORKING-STORAGE SECTION.
-       77 nombre1 PIC 9(5).
-       77 nombre2 PIC 9(5).
-       77 resultat PIC Z(7)9.
-      *-----------------------
+       77  NUM1     PIC 9(7).
+       77  NUM2     PIC 9(7).
+       77  RESULT   PIC Z(7)9.
+       77  FLAG     PIC X(1) VALUE 'O'.
+      
+       
+
        PROCEDURE DIVISION.
-      *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-       MAIN-PROCEDURE.
-      **
-      * The main procedure of the program
-      **
+           
+           PERFORM UNTIL FLAG = 'N'
 
-           DISPLAY "Entrez le premier nombre : ".
-           ACCEPT nombre1.
-           DISPLAY "Entrez le deuxième nombre : ".
-           ACCEPT nombre2.
+                PERFORM MEMBRE1
 
-           SUBTRACT nombre1 FROM nombre2 GIVING resultat.
-           DISPLAY "Le résultat de votre soustraction est " resultat.
 
-       STOP RUN.
-      ** add other procedures here
-       END PROGRAM soustraction.
+                PERFORM MEMBRE2
+                
+                
+
+                PERFORM  SOUSTRACTION-MEMBRES
+                PERFORM ACCEPT-CONTINUE
+              
+
+              
+           END-PERFORM.
+
+       MEMBRE1.
+           DISPLAY "Enter the first number or 'N' to quit: ".
+           ACCEPT NUM1.
+
+       MEMBRE2.
+           DISPLAY "Enter the second number or 'N' to quit: ".
+           ACCEPT NUM2.
+
+
+       SOUSTRACTION-MEMBRES.
+            SUBTRACT NUM1 FROM NUM2 GIVING RESULT.
+            DISPLAY "The result of subtraction is: " RESULT.
+  
+
+       ACCEPT-CONTINUE.
+           DISPLAY "Do you want to continue? (O/N): ".
+           ACCEPT FLAG.
+
+
+           STOP RUN.
+       END PROGRAM Subtraction.
+
